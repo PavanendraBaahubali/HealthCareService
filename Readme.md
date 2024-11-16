@@ -126,6 +126,35 @@ startServer();
   
     <img src="./assets/addServiceResponse.PNG" alt="Add Service response" height="300px">
 
+ ### Validation ###
+ 
+   - The API performs basic validation when adding a health care service to ensure that essential fields like `serviceName`, `serviceDescription`, and `servicePrice` are
+      provided and correctly formatted. This helps maintain data integrity and avoid incomplete entries. If validation fails, a relevant error message is returned to guide 
+      the user.
+
+   - If a user forgets to provide all required fields, such as `serviceName`, `serviceDescription`, or `servicePrice`, the API will respond with a message indicating that         "All fields are required."
+
+   - Additionally, if any specific field is missing, the response will clearly indicate which field is required, guiding the user to complete their input correctly. This         ensures accurate and consistent data entry for every health care service added.
+      
+   - **Example**
+      - Try to add a service without a `servicePrice`
+      
+         - **Request Body**
+
+             ```
+             {
+                "serviceName" : "General Checkup",
+                "serviceDescription" : "Routine physical examination to assess overall health.",
+            }
+             ```
+      - **Response Body** :
+
+         ```
+         {
+            "message": "Service Price is required"
+        }
+         ```
+
 ### 2) Get All Available Health Care Services
 
 **Endpoint**: `/api/v1/getAllServices`
